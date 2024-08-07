@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to SERENA</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to SERENA</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to SERENA</h1>
-        <p>Smart Electronic Resource for Engaging and Navigating Applications</p>
-        <p>To proceed, we need the following permissions:</p>
-        <ul>
-            <li>Access to Microsoft Teams calendar</li>
-            <li>Access to Spotify</li>
-            <li>Access to Google Keep for notes</li>
-        </ul>
-        <div class="button-container">
-            <button class="btn" onclick="window.location.href='/auth/microsoft'">Login with Microsoft</button>
-            <button class="btn" onclick="window.location.href='/auth/spotify'">Login with Spotify</button>
-            <button class="btn" onclick="window.location.href='/auth/google'">Login with Google</button>
-        </div>
-    </div>
-    <script src="script.js"></script>
+  <div class="content">
+    <h1>Welcome to SERENA</h1>
+    <p>SERENA - Smart Electronic Resource for Engaging and Navigating Applications</p>
+    <p>This application requires the following permissions:</p>
+    <ul>
+      <li>Google account access for calendar and notes</li>
+      <li>Spotify account access for music playback</li>
+    </ul>
+    <p>To use the bot, please log in with your Google and Spotify accounts:</p>
+    <button id="google-login">Login with Google</button>
+    <button id="spotify-login">Login with Spotify</button>
+    <div id="shapes"></div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
