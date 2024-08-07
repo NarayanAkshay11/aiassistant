@@ -16,7 +16,7 @@ document.addEventListener('mousemove', (e) => {
     const y = e.clientY - rect.top - rect.height / 2;
 
     const angle = Math.atan2(y, x);
-    const distance = Math.min(Math.sqrt(x*x + y*y) / 5, 5); // Reduced eye movement
+    const distance = Math.min(Math.sqrt(x*x + y*y) / 5, 10);
 
     const eyeX = Math.cos(angle) * distance;
     const eyeY = Math.sin(angle) * distance;
@@ -25,11 +25,11 @@ document.addEventListener('mousemove', (e) => {
     rightEye.querySelector('.pupil').style.transform = `translate(${eyeX}px, ${eyeY}px)`;
 });
 
-// Mouth animation and speech
+// Mouth animation
 function speak(text) {
     if (isSpeaking) return;
     isSpeaking = true;
-    const duration = text.length * 50;
+    const duration = text.length * 50;  // Adjust speaking duration based on text length
     const startTime = Date.now();
 
     function animateMouth() {
@@ -41,7 +41,7 @@ function speak(text) {
             return;
         }
 
-        const openness = Math.sin(progress * Math.PI * 8) * 3; // Reduced mouth movement
+        const openness = Math.sin(progress * Math.PI * 8) * 10;
         upperLip.style.transform = `translateY(-${openness}px)`;
         lowerLip.style.transform = `translateY(${openness}px)`;
 
@@ -50,10 +50,10 @@ function speak(text) {
 
     animateMouth();
 
-    // Text-to-speech with a deeper voice
+    // Text-to-speech
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.pitch = 0.8; // Lower pitch for a deeper voice
-    utterance.rate = 0.9; // Slightly slower rate
+    utterance.pitch = 1;
+    utterance.rate = 1;
     utterance.voice = speechSynthesis.getVoices().find(voice => voice.name === 'Google UK English Male') || speechSynthesis.getVoices()[0];
     speechSynthesis.speak(utterance);
 }
@@ -90,18 +90,20 @@ recognition.start();
 // Simple AI model (using compromise.js for basic NLP)
 function processInput(input) {
     const doc = nlp(input.toLowerCase());
-    let response = "I'm afraid I don't quite understand. Could you please rephrase that?";
+    let response = "I'm sorry, I didn't understand that.";
 
     if (doc.has('hello') || doc.has('hi')) {
-        response = "Good day. How may I be of assistance?";
+        response = "Hello! I'm Tony Stark's AI assistant. How can I help you today?";
     } else if (doc.has('how are you')) {
-        response = "I'm quite well, thank you for inquiring. How may I help you today?";
+        response = "I'm functioning at optimal levels, thanks for asking!";
     } else if (doc.has('what') && doc.has('your name')) {
-        response = "I am an AI assistant. You may address me as such.";
+        response = "I'm Tony Stark's AI assistant. You can call me JARVIS if you'd like.";
+    } else if (doc.has('joke')) {
+        response = "Why don't scientists trust atoms? Because they make up everything!";
     } else if (doc.has('weather')) {
-        response = "I regret to inform you that I don't have access to current weather information. Perhaps you could consult a meteorological service?";
+        response = "I'm sorry, I don't have access to real-time weather data. You might want to check a weather app for that information.";
     } else if (doc.has('bye') || doc.has('goodbye')) {
-        response = "Farewell. It's been a pleasure assisting you.";
+        response = "Goodbye! It was a pleasure assisting you.";
     }
 
     speak(response);
