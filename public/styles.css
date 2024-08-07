@@ -1,50 +1,58 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: url('assets/images/hanuman.jpg') no-repeat center center fixed;
-    background-size: cover;
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
     color: white;
+    font-family: 'Arial', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    overflow: hidden;
-}
-
-.intro-container {
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 10px;
+    margin: 0;
 }
 
 .container {
     text-align: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.neon-circle {
-    width: 200px;
-    height: 200px;
-    border: 5px solid #00ff00;
-    border-radius: 50%;
-    animation: rotate 5s infinite linear;
-    margin: 0 auto 20px auto;
+h1 {
+    margin-bottom: 20px;
 }
 
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.assistant h1 {
-    font-size: 2em;
-    margin: 0;
-}
-
-.assistant p {
+p {
     font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+ul {
+    text-align: left;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
 }
