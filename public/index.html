@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERENA - Smart Electronic Resource for Engaging and Navigating Applications</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="intro-container">
+        <h1>Welcome to SERENA</h1>
+        <p>SERENA is your Smart Electronic Resource for Engaging and Navigating Applications. To assist you, SERENA needs access to:</p>
+        <ul>
+            <li>Microsoft: For accessing your calendar and schedule.</li>
+            <li>Spotify: To play your favorite music.</li>
+            <li>Google: To take notes on Google Keep.</li>
+        </ul>
+        <p>Please log in to proceed.</p>
+        <button id="login-ms">Login to Microsoft</button>
+        <button id="login-spotify">Login to Spotify</button>
+        <button id="login-google">Login to Google</button>
+    </div>
+    <script>
+        document.getElementById("login-ms").addEventListener("click", () => window.location.href = '/auth/microsoft');
+        document.getElementById("login-spotify").addEventListener("click", () => window.location.href = '/auth/spotify');
+        document.getElementById("login-google").addEventListener("click", () => window.location.href = '/auth/google');
+    </script>
+</body>
+</html>
