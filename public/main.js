@@ -1,29 +1,34 @@
-// Three.js setup
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.getElementById('shapes').appendChild(renderer.domElement);
+document.getElementById('search').addEventListener('click', () => {
+  const query = prompt('What would you like to search for?');
+  fetch('/search', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query })
+  }).then(response => response.json())
+    .then(data => alert(data.message));
+});
 
-const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
+document.getElementById('play').addEventListener('click', () => {
+  const track = prompt('What track would you like to play?');
+  fetch('/play', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ track })
+  }).then(response => response.json())
+    .then(data => alert(data.message));
+});
 
-camera.position.z = 5;
+document.getElementById('note').addEventListener('click', () => {
+  const note = prompt('What would you like to note down?');
+  fetch('/take-note', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ note })
+  }).then(response => response.json())
+    .then(data => alert(data.message));
+});
 
-function animate() {
-  requestAnimationFrame(animate);
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
-  renderer.render(scene, camera);
-}
-
-animate();
-
-document.addEventListener('mousemove', (event) => {
-  const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-  const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-  camera.position.x = mouseX * 5;
-  camera.position.y = mouseY * 5;
+document.getElementById('calendar').addEventListener('click', () => {
+  const calendarUrl = 'https://teams.microsoft.com';
+  window.open(calendarUrl, '_blank');
 });
